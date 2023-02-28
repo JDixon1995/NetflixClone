@@ -1,9 +1,11 @@
 import './list.scss'
 import { ArrowForwardIosOutlined, ArrowBackIosOutlined } from '@material-ui/icons'
 import ListItem from '../listItem/ListItem.jsx'
-import { useRef } from 'react'
+import { useState, useRef } from 'react'
 
 const List = () => {
+
+    const [slideNumber, setSlideNumber ] = useState(0)
 
     const listRef = useRef()
 
@@ -12,11 +14,13 @@ const List = () => {
         let distance = listRef.current.getBoundingClientRect().x - 50
         console.log(distance)
 
-        if(direction === 'left') {
+        if(direction === 'left' && slideNumber > 0) {
+            setSlideNumber(slideNumber - 1)
             listRef.current.style.transform = `translateX(${230 + distance}px)`
         }
 
-        if(direction === 'right') {
+        if(direction === 'right' && slideNumber < 5) {
+            setSlideNumber(slideNumber + 1)
             listRef.current.style.transform = `translateX(${-230 + distance}px)`
         }
     }
