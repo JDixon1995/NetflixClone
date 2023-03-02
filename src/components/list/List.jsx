@@ -6,11 +6,12 @@ import { useState, useRef } from 'react'
 const List = () => {
 
     const [slideNumber, setSlideNumber ] = useState(0)
+    const [ isMoved, setIsMoved ] = useState(false)
 
     const listRef = useRef()
 
     const handleClick = (direction) => {
-
+        setIsMoved(true)
         let distance = listRef.current.getBoundingClientRect().x - 50
         console.log(distance)
 
@@ -31,8 +32,14 @@ const List = () => {
         <div className="wrapper">
             <ArrowBackIosOutlined 
             className="sliderArrow left"
-            onClick={() => handleClick('left')} />
+            onClick={() => handleClick('left')}
+            style={{ display : !isMoved && 'none'}}
+            />
             <div className="container" ref={listRef}>
+                <ListItem />
+                <ListItem />
+                <ListItem />
+                <ListItem />
                 <ListItem />
                 <ListItem />
                 <ListItem />
