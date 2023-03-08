@@ -22,8 +22,9 @@ const ListItem = ({ index}) => {
           <>
           <video 
           src={trailer} 
-          autoPlay={true}
+          autoPlay
           loop
+          muted
           />
           <div className="itemInfo">
             <div className="icons">
