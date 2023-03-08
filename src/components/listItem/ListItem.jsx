@@ -33,7 +33,7 @@ const ListItem = ({ index}) => {
               <ThumbUp className='icon'/>
               <ThumbDown className='icon'/>
             </div>
-            <div className="intemInfoTop">
+            <div className="itemInfoTop">
               <span>1 Hour, 14 Minutes</span>
               <span className="limit">+17</span>
               <span>1999</span>
