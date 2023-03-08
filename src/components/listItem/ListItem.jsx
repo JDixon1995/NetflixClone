@@ -28,10 +28,10 @@ const ListItem = ({ index}) => {
           />
           <div className="itemInfo">
             <div className="icons">
-              <PlayArrow />
-              <Add />
-              <ThumbUp />
-              <ThumbDown />
+              <PlayArrow className='icon'/>
+              <Add className='icon'/>
+              <ThumbUp className='icon'/>
+              <ThumbDown className='icon'/>
             </div>
             <div className="intemInfoTop">
               <span>1 Hour, 14 Minutes</span>
