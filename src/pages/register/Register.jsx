@@ -18,7 +18,7 @@ const Register = () => {
             <h2>Watch Anywhere. Cancel anytime.</h2>
             <p>Ready to watch? Enter your email to create or restart your membership.</p>
             <div className="input">
-                <input type="email" placeholder='email address' />
+                <input type="email" placeholder='Please enter your e-mail' />
                 <button className="registerButton">Get Started</button>
             </div>
         </div>
