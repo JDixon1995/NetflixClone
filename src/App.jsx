@@ -3,23 +3,37 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link
+  Navigate
  } from 'react-router-dom'
+import { useContext } from 'react'
 import Home from './pages/home/Home'
 import Watch from './pages/watch/Watch';
 import Register from './pages/register/Register';
 import Login from './pages/login/Login'
 
 function App() {
+
+  const user = true
+
   return(
     <Router>
       <Routes>
         <Route
         exact 
         path='/'
-        element={<Home />}
+        element={ user ? <Home /> : <Navigate to="/register" />}
         />
-        <Route 
+        <Route
+        path='/register'
+        element={ !user ? <Register /> : <Navigate to='/' /> }
+        />
+        <Route
+        path='login'
+        element={ !user ? <Login /> : <Navigate to='/' /> }
+        />
+        {user && (
+          <>
+            <Route 
         path='/movies'
         element={<Home type='movies' />}
         /> 
@@ -33,6 +47,8 @@ function App() {
         path='/watch'
         element={<Watch />}
         />
+          </>
+        )}
       </Routes>
     </Router>
   )
