@@ -29,6 +29,10 @@ function App() {
         element={<Home type='series' />}
         /> 
         <Route />
+        <Route 
+        path='/watch'
+        element={<Watch />}
+        />
       </Routes>
     </Router>
   )
