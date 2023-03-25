@@ -1,6 +1,7 @@
 import './listItem.scss'
 import { PlayArrow, Add, ThumbUp, ThumbDown } from '@material-ui/icons'
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 const ListItem = ({ index, item }) => {
 
@@ -23,6 +24,7 @@ const ListItem = ({ index, item }) => {
   }, [item])
 
   return (
+  <Link to='/watch' state={{movie : movie}}>
     <div 
     className="listItem"
     style={{left: isHovered && index * 225 - 50 + index * 2.5}}
@@ -50,7 +52,7 @@ const ListItem = ({ index, item }) => {
             </div>
             <div className="itemInfoTop">
               <span>1 Hour, 14 Minutes</span>
-              <span className="limit">+17</span>
+              <span className="limit">{movie.limit}</span>
               <span>{movie.year}</span>
             </div>
             <div className="desc">{movie.desc}</div>
@@ -59,6 +61,7 @@ const ListItem = ({ index, item }) => {
           </>
         )}
     </div>
+  </Link>
   )
 }
 
