@@ -5,7 +5,7 @@ import { useState, useRef } from 'react'
 
 const List = () => {
 
-    const [slideNumber, setSlideNumber ] = useState(0)
+    const [ slideNumber, setSlideNumber ] = useState(0)
     const [ isMoved, setIsMoved ] = useState(false)
 
     const listRef = useRef()
