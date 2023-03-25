@@ -14,9 +14,14 @@ const Home = ({ type }) => {
     const getRandomLists = async () => {
       try {
         const res = await axios.get(
-          `lists${type && '?type=' + type}&${genre && 'genre=' + genre}`)
+          `lists${type ? '?type=' + type : ''}${genre ? '&genre=' + genre : ''}`,
+          {
+            headers: {
+    "token": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MThlMzJjM2RlYzI2M2IwNzMwZjU4ZiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY3OTc2ODgxMSwiZXhwIjoxNjgwMjAwODExfQ.u0udN9ucvlN2-OzwMllypjiJiOO_Cg6IB-8FWFgwPdk" 
+            }
+          })
           setLists(res.data)
-          console.log(lists)
+          console.log(res.data)
       } catch (err) {
         console.log(err)
       }
