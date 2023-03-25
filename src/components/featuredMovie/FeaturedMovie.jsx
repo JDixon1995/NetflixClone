@@ -1,8 +1,30 @@
 import './featuredMovie.scss'
 import { PlayArrow, InfoOutlined } from '@material-ui/icons'
-
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 const FeaturedMovie = ({ type }) => {
+
+  const [ content, setContent ] = useState({})
+
+  useEffect(() => {
+    const getRandomContent = async () => {
+      try {
+        const res = await axios.get(`/movies/random?type=${type}`, {
+          headers: {
+            token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MThlMzJjM2RlYzI2M2IwNzMwZjU4ZiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY3OTc2ODgxMSwiZXhwIjoxNjgwMjAwODExfQ.u0udN9ucvlN2-OzwMllypjiJiOO_Cg6IB-8FWFgwPdk" ,
+          },
+        });
+        setContent(res.data[0])
+      } catch (err) {
+          console.log(err)        
+      }
+    }
+    getRandomContent()
+  }, [type])
+  console.log(content)
+
   return (
     <div className='featured'>
       {type && (
@@ -28,13 +50,13 @@ const FeaturedMovie = ({ type }) => {
       )}
         <img 
         width={'100%'}
-        src="https://images.pexels.com/photos/6899260/pexels-photo-6899260.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500'" 
+        src={content.img} 
         alt="" />
         <div className="info">
           <img 
-          src="https://occ-0-1432-1433.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABUZdeG1DrMstq-YKHZ-dA-cx2uQN_YbCYx7RABDk0y7F8ZK6nzgCz4bp5qJVgMizPbVpIvXrd4xMBQAuNe0xmuW2WjoeGMDn1cFO.webp?r=df1" 
+          src={content.imgTitle} 
           alt="" />
-          <span className="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae qui molestias quas sapiente porro voluptates commodi cupiditate rerum officiis eum modi quis magni, quos aliquid aut tempora dicta vitae sit.</span>
+          <span className="description">{content.desc}</span>
           <div className="buttons">
             <button className="play">
               <PlayArrow />
